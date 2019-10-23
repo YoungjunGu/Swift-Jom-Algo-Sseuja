@@ -15,6 +15,7 @@
 
 <details><summary>인스턴스 메서드</summary> 
   <li><a href = "#enumerated"><code>enumerated</code></a></li>
+  <li><a href = "#forEach"><code>forEach</code></a></li>
   <li><a href = "#zip"><code>zip</code></a></li>
 </details>
 
