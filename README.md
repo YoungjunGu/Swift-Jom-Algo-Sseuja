@@ -1,6 +1,7 @@
 # 영준아 Swift 좀 Algo 쓰자  
 
 알고리즘 문제를 Swift로 해결하면서 새롭게 알게 된 내용을 마구마구 기록하겠습니다.
+<<<<<<< HEAD
 
 
 
@@ -149,3 +150,5 @@ func combination(_ number:[Character],_ k: Int, combi: inout [Int], target: Int,
     }
 }
 ```
+=======
+>>>>>>> dbef1cecc347fca61e24128b23f998435c870f64
