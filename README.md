@@ -1,1 +1,3 @@
-# Swift-Jom-Algo-Sseuja
+# 영준아 Swift 좀 Algo 쓰자  
+
+알고리즘 문제를 Swift로 해결하면서 새롭게 알게 된 내용을 마구마구 기록하겠습니다.
