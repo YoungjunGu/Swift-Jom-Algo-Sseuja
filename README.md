@@ -17,20 +17,29 @@
   <li><a href = "#enumerated"><code>enumerated</code></a></li>
   <li><a href = "#forEach"><code>forEach</code></a></li>
   <li><a href = "#zip"><code>zip</code></a></li>
-</details>
+</details>  
+
+
+
+<details><summary>Swift 자료구조</summary> 
+  <li><a href = "#PriorityQueue"><code>PriorityQueue</code></a></li>
+</details>  
 
 
 
 <details><summary>알고리즘 Strategy</summary> 
   <li><a href = "#combination"><code>combination</code></a></li>
-</details>
+  <li><a href = "#Dijkstra"><code>Dijkstra</code></a></li>
+</details>  
+
 
 
 
 ## 문자열 처리
 
 ### subString
-
+<details><summary>코드 보기</summary>
+  
 ```swift
 // String subscript를 활용한 subString 가져오기
 extension String {
@@ -42,26 +51,30 @@ extension String {
     }
 }
 ```
-
+</details>
 
 
 ### 특정문자삭제
-
+<details><summary>코드 보기</summary>
+  
 ```swift
 var str = "!~@@@ String@~!!mmTest"
 str.components(separatedBy: ["~","!","@",","]).joined() // String Test
 
 ```
+</details>
 
 
 
 ### 특정문자치환
+<details><summary>코드 보기</summary>
 
 ```swift
 let str = "()(((()())(())()))(())"
 let replacingStr = arrangement.replacingOccurrences(of: "()", with: "0")  //0(((00)(0)0))(0)
 ```
 
+</details>
 
 
 
@@ -69,7 +82,8 @@ let replacingStr = arrangement.replacingOccurrences(of: "()", with: "0")  //0(((
 ## 인스턴스 메서드
 
 ### enumerated 
-
+<details><summary>코드 보기</summary>
+  
 ```swift
 // Sequence의 index 와 position의 pair로 접근
 for (n, c) in "Swift".enumerated() {
@@ -81,11 +95,13 @@ for (n, c) in "Swift".enumerated() {
 // Prints "3: 'f'"
 // Prints "4: 't'"
 ```
+</details>
 
 
 
 ### zip
-
+<details><summary>코드 보기</summary>
+  
 ```swift
 let names: Set = ["Sofia", "Camilla", "Martina", "Mateo", "Nicolás"]
 var shorterIndices: [Set<String>.Index] = []
@@ -101,11 +117,13 @@ for i in shorterIndices {
 // Prints "Sofia"
 // Prints "Mateo"
 ```
+</details>
 
 
 
 ### forEach
-
+<details><summary>코드 보기</summary>
+  
 map 과 동일한 기능을 하지만 `forEach` 의 경우 컨테이너를 반환하지 않고 단순하게 접근을 한다. 그렇기 때문에 값을 변경할려면 map을 사용, 단순 요소 접근은 `forEach` 를 사용하자.
 
 ```swift
@@ -117,10 +135,7 @@ numberWords.forEach { word in
 // Prints "two"
 // Prints "three"
 ```
-
-
-
-
+</details>
 
 
 
@@ -131,7 +146,7 @@ numberWords.forEach { word in
 ### combination
 
 <details><summary>코드 보기</summary>
-  
+
 ```swift
 // nCk : n 개 중에 k 개의 조합 선택 index: 0~k 개의 선택된 개수, target 0~n개 중에서 하나를 선택, combi: 선택된 index의 조합
 func combination(_ number:[Character],_ k: Int, combi: inout [Int], target: Int, n: Int, index: Int, list: inout [Int]) {
@@ -153,5 +168,57 @@ func combination(_ number:[Character],_ k: Int, combi: inout [Int], target: Int,
     }
 }
 ```
-<details>  
+</details>  
+
+### Dijkstra
+
+<details><summary>코드 보기</summary>
+  
+- distance: 시작 vertex에서 갈 수 있는(pathLegnth가 존재하는) 모든 shortestPath 정보  
+- matrix : weight 값을 가지는 undirected graph의 인접행렬
+- visited : 재방문을 방지하는 배열
+  
+```swift
+unc shortestPath(_ distance: inout [Int],_ matrix: [[Int]], _ visited: inout [Bool], _ N: Int) {
+    var nextVertex: Int
+    // 1 부터 시작
+    distance[1] = 0
+    
+    for i in 1...N {
+        distance[i] = matrix[1][i]
+    }
+    
+    distance[1] = 0
+    visited[1] = false
+    for _ in 1...N-2 {
+        nextVertex = selectPath(distance, N, visited)
+        visited[nextVertex] = false
+        for j in 1...N {
+            if visited[j] {
+                if distance[nextVertex] + matrix[nextVertex][j] < distance[j] {
+                    distance[j] = distance[nextVertex] + matrix[nextVertex][j]
+                }
+            }
+        }
+    }
+}
+
+func selectPath(_ distance: [Int], _ N: Int, _ visited: [Bool]) -> Int {
+    var minWeight = 987654321
+    var minPosition = -1
+    
+    for i in 1...N {
+        if minWeight > distance[i] && visited[i] {
+            minWeight = distance[i]
+            minPosition = i
+        }
+    }
+    return minPosition
+}
+```
+</details>
+
+  
+  
+ 
   
