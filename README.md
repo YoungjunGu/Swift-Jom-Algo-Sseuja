@@ -129,7 +129,8 @@ numberWords.forEach { word in
 ## 알고리즘 Startegy
 
 ### combination
-<summary>코드 보기</summary>
+
+<details><summary>코드 보기</summary>
   
 ```swift
 // nCk : n 개 중에 k 개의 조합 선택 index: 0~k 개의 선택된 개수, target 0~n개 중에서 하나를 선택, combi: 선택된 index의 조합
