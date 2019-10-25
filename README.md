@@ -152,5 +152,51 @@ func combination(_ number:[Character],_ k: Int, combi: inout [Int], target: Int,
     }
 }
 ```
-<details>
+<details>  
+  
+### Dijkstra  
+<details><summary>코드 보기</summary>
+  
+- distance: 시작 vertex에서 갈 수 있는(pathLegnth가 존재하는) 모든 shortestPath 정보  
+- matrix : weight 값을 가지는 undirected graph의 인접행렬
+- visited : 재방문을 방지하는 배열
+  
+```swift
+func shortestPath(_ distance: inout [Int],_ matrix: [[Int]], _ visited: inout [Bool], _ N: Int) {
+    var nextVertex: Int
+    // 1 부터 시작
+    distance[1] = 0
+    
+    for i in 1...N {
+        distance[i] = matrix[1][i]
+    }
+    
+    distance[1] = 0
+    visited[1] = false
+    for _ in 1...N-2 {
+        nextVertex = selectPath(distance, N, visited)
+        visited[nextVertex] = false
+        for j in 1...N {
+            if visited[j] {
+                if distance[nextVertex] + matrix[nextVertex][j] < distance[j] {
+                    distance[j] = distance[nextVertex] + matrix[nextVertex][j]
+                }
+            }
+        }
+    }
+}
 
+func selectPath(_ distance: [Int], _ N: Int, _ visited: [Bool]) -> Int {
+    var minWeight = 987654321
+    var minPosition = -1
+    
+    for i in 1...N {
+        if minWeight > distance[i] && visited[i] {
+            minWeight = distance[i]
+            minPosition = i
+        }
+    }
+    return minPosition
+}
+```
+<details>
