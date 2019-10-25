@@ -32,10 +32,10 @@
   <li><a href = "#Dijkstra"><code>Dijkstra</code></a></li>
 </details>  
 
+</br>
+</hr>
 
-
-
-## 문자열 처리
+# 문자열 처리
 
 ### subString
 <details><summary>코드 보기</summary>
@@ -76,10 +76,11 @@ let replacingStr = arrangement.replacingOccurrences(of: "()", with: "0")  //0(((
 
 </details>
 
+</br>
+</hr>
 
+# 인스턴스 메서드
 
-
-## 인스턴스 메서드
 
 ### enumerated 
 <details><summary>코드 보기</summary>
@@ -135,13 +136,121 @@ numberWords.forEach { word in
 // Prints "two"
 // Prints "three"
 ```
-</details>
+</details>  
+
+</br>
+</hr>
+
+# Swift 자료구조  
+
+### PriorityQueue
+<details><summary>코드 보기</summary>
+- push(): heap에 값을 삽입
+- pop(): heap root 반환
+- adjust() : heap에 값을 추가하고 min/max heap을 유지하기위하 함수
+- heapSort(): heap을 재정렬  
+
+```swift
+import Foundation
+
+public struct PriorityQueue<T: Comparable> {
+    private var heap = [T]()
+    private let ordered: (T, T) -> Bool
+    
+    public init(ascending: Bool = false, startingValues: [T] = []) {
+        if ascending {
+            ordered = { a,b in a > b }
+        } else {
+            ordered = { a,b in a < b }
+        }
+        
+        heap = startingValues
+        var i = (heap.count / 2) - 1
+        while i >= 0 {
+            adjust(i)
+            i = i - 1
+        }
+    }
+    
+    public var count: Int {
+        return heap.count
+    }
+    
+    public var isEmpty: Bool {
+        return heap.isEmpty
+    }
+    
+    public mutating func push(_ element: T) {
+        heap.append(element)
+        heapSort(heap.count - 1)
+    }
+    
+    public mutating func pop() -> T? {
+        if heap.isEmpty { return nil }
+        if heap.count == 1 {
+            return heap.removeFirst()
+        }
+        
+        let root = heap.first
+        heap.swapAt(0, heap.count - 1)
+        _ = heap.removeLast()
+        adjust(0)
+        return root
+    }
+    
+    public mutating func remove(_ item: T) {
+        if let index = heap.firstIndex(of: item) {
+            heap.swapAt(index, heap.count - 1)
+            heap.removeLast()
+            heapSort(index)
+            adjust(index)
+        }
+    }
+    
+    public mutating func removeAll(_ item: T) {
+        var lastCount = heap.count
+        remove(item)
+        while heap.count < lastCount {
+            lastCount = heap.count
+            remove(item)
+        }
+    }
+    
+    public func peek() -> T? {
+        return heap.first
+    }
+    
+    public mutating func clear() {
+        heap.removeAll(keepingCapacity: false)
+    }
+    
+    private mutating func adjust(_ index: Int) {
+        var index = index
+        while 2 * index + 1 < heap.count {
+            var j = 2 * index + 1
+            if j < (heap.count - 1) && ordered(heap[j], heap[j + 1]) { j = j + 1 }
+            if !ordered(heap[index], heap[j]) { break }
+            heap.swapAt(index, j)
+            index = j
+        }
+    }
+    
+    private mutating func heapSort(_ index: Int) {
+        var index = index
+        while index > 0 && ordered(heap[(index - 1) / 2], heap[index]) {
+            heap.swapAt((index - 1) / 2, index)
+            index = (index - 1) / 2
+        }
+    }
+}
+```
+</details>  
+
+</br>
+</hr>
 
 
-
-
-
-## 알고리즘 Startegy
+# 알고리즘 Startegy
 
 ### combination
 
