@@ -168,11 +168,20 @@ func gcd(num1: Int, num2: Int) -> Int {
 
 ### 최소공배수  
 <details><summary>코드 보기</summary>
+- 두 수의 최소공배수
   
 ```swift
 func lcm1(num1: Int, num2: Int) -> Int {
     return abs(num1 * num2) / gcd(num1: num1, num2: num2)
 }  
+```
+
+- 두수 이상의 최소 공배수 
+
+```swift
+func lcm2(arr1: [Int]) -> Int {
+    return arr1.reduce(1) { lcm1(num1: $0, num2: $1) }
+}
 ```
 </details>  
 
