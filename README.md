@@ -21,6 +21,13 @@
 
 
 
+<details><summary>Swift Math</summary> 
+  <li><a href = "#최대공약수"><code>최대공약수</code></a></li>
+  <li><a href = "#최소공배수"><code>최소공배수</code></a></li>
+</details>  
+
+
+
 <details><summary>Swift 자료구조</summary> 
   <li><a href = "#PriorityQueue"><code>PriorityQueue</code></a></li>
 </details>  
@@ -31,6 +38,8 @@
   <li><a href = "#combination"><code>combination</code></a></li>
   <li><a href = "#Dijkstra"><code>Dijkstra</code></a></li>
 </details>  
+
+
 
 </br>
 </hr>
@@ -140,6 +149,36 @@ numberWords.forEach { word in
 
 </br>
 </hr>
+
+# Swift Math  
+
+### 최대공약수  
+<details><summary>코드 보기</summary>
+
+```swift
+func gcd(num1: Int, num2: Int) -> Int {
+    let mod = num1 % num2
+    if mod != 0 {
+        return gcd(num1: num2, num2: mod)
+    }
+    return num2
+}  
+```  
+</details>  
+
+### 최소공배수  
+<details><summary>코드 보기</summary>
+  
+```swift
+func lcm1(num1: Int, num2: Int) -> Int {
+    return abs(num1 * num2) / gcd(num1: num1, num2: num2)
+}  
+```
+</details>  
+
+</br>
+</hr>
+
 
 # Swift 자료구조  
 
@@ -325,9 +364,5 @@ func selectPath(_ distance: [Int], _ N: Int, _ visited: [Bool]) -> Int {
     return minPosition
 }
 ```
-</details>
-
-  
-  
- 
-  
+</details>  
+    
