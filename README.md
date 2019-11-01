@@ -321,6 +321,20 @@ for value in dic.values { }
 // 4. 값 삭제
 dic.removeValue(forKey: "String key 값")
 ```
+- Hasing에 Key와 Value가 중복된 횟수로 추가가 될때
+  
+```swift
+// 배열 arr에 하나씩 접근하여 arr의 요소가 key가 되고 중복된 횟수를 value로 가질떄
+  
+arr.forEach { 
+	guard let count = dic[&0] else {
+  		dic[&0] = 1
+  		return
+  	}
+  	dic[&0] = count + 1
+}  
+```
+  
 </details>  
 
 </br>
@@ -402,5 +416,4 @@ func selectPath(_ distance: [Int], _ N: Int, _ visited: [Bool]) -> Int {
     return minPosition
 }
 ```
-</details>  
-    
+</details>
