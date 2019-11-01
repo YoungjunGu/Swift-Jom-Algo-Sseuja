@@ -30,6 +30,7 @@
 
 <details><summary>Swift 자료구조</summary> 
   <li><a href = "#PriorityQueue"><code>PriorityQueue</code></a></li>
+  <li><a href = "#Hashing"><code>Hashing</code></a></li>
 </details>  
 
 
@@ -291,6 +292,34 @@ public struct PriorityQueue<T: Comparable> {
         }
     }
 }
+```
+</details>  
+
+### Hashing  
+
+<details><summary>코드 보기</summary>
+  
+```swift
+// 1. 딕셔너리 생성
+var dic : [Int : String] = [:]
+var dic2 = [Int : String]()
+var dic3 : Dictionary = [Int:String]()
+var dic4 : Dictionary<Int, String> = Dictionary<Int, String>()
+
+// 2. 값 추가
+var dic : [String: Int] = [:]
+dic.updateValue(Int, forKey: "String Key값") // 옵셔널 반환
+dic["String Key값"] = Int
+
+// 3. 값 탐색
+// 이 때 key를 알고 있어야 하면 Set<String>을 추가하여 따로 키를 가지게 저장한다. 
+for (key, value) in dic { }
+
+// 값만 가져오고 싶을때
+for value in dic.values { }
+
+// 4. 값 삭제
+dic.removeValue(forKey: "String key 값")
 ```
 </details>  
 
