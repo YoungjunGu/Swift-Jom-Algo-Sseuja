@@ -9,6 +9,7 @@
   <li><a href = "#subString"><code>subString</code></a></li>
   <li><a href = "#특정문자삭제"><code>특정문자삭제</code></a></li>
   <li><a href = "#특정문자치환"><code>특정문자치환</code></a></li>
+  <li><a href = "#1차원문자열을2차원으로"><code>1차원문자열을2차원으로</code></a></li>
 </details>
 
 
@@ -84,7 +85,30 @@ let str = "()(((()())(())()))(())"
 let replacingStr = arrangement.replacingOccurrences(of: "()", with: "0")  //0(((00)(0)0))(0)
 ```
 
-</details>
+</details>  
+  
+  
+### 1차원문자열을2차원으로
+
+<details><summary>코드 보기</summary>
+
+```swift
+  	
+  	// col: n, row: m
+    var arr2D = [[String]](repeating: [String](repeating: "0", count: n), count: m)
+    
+    
+    for i in 0..<m {
+        let wordLine = arr1D[i].map{ String($0)}
+        for j in 0..<n {
+            arr2D[i][j] = wordLine[j]
+  			// arr2D[i][j] wordLine[wordLine.index(wordLine.startIndex, offsetBy: j)]
+        }
+    }
+```
+
+</details>  
+
 
 </br>
 </hr>
