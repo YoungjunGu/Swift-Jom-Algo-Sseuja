@@ -10,6 +10,7 @@
   <li><a href = "#특정문자삭제"><code>특정문자삭제</code></a></li>
   <li><a href = "#특정문자치환"><code>특정문자치환</code></a></li>
   <li><a href = "#1차원문자열을2차원으로"><code>1차원문자열을2차원으로</code></a></li>
+  <li><a href = "#대문자소문자변환"><code>대문자소문자변환</code></a></li>
 </details>
 
 
@@ -108,6 +109,40 @@ let replacingStr = arrangement.replacingOccurrences(of: "()", with: "0")  //0(((
 ```
 
 </details>  
+  
+  
+### 대문자소문자변환
+<details><summary>코드 보기</summary>
+
+```swift
+let str = "()(((()())(())()))(())"
+let replacingStr = arrangement.replacingOccurrences(of: "()", with: "0")  //0(((00)(0)0))(0)
+```
+
+</details>  
+  
+  
+### 1차원문자열을2차원으로
+
+<details><summary>코드 보기</summary>
+
+```swift
+    func swapCases(_ str: String) -> String {
+        var result = ""
+        for c in str {
+            let s = String(c)
+            let lo = s.lowercased()
+            let up = s.uppercased()
+            result += (s == lo) ? up : lo
+        }
+        print(result.lowercased())
+        return result
+    }
+```
+
+</details>  
+  
+  
 
 
 </br>
