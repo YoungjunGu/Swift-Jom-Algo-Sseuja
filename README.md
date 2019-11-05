@@ -407,23 +407,36 @@ arr.forEach {
 <details><summary>코드 보기</summary>
 
 ```swift
-// nCk : n 개 중에 k 개의 조합 선택 index: 0~k 개의 선택된 개수, target 0~n개 중에서 하나를 선택, combi: 선택된 index의 조합
-func combination(_ number:[Character],_ k: Int, combi: inout [Int], target: Int, n: Int, index: Int, list: inout [Int]) {
+// nCk
+// sequence: n개로 이루어진 내가 조합할 배열
+// k : n개중에 조합하여 만들어낼 k개를 지정
+// combi: sequence에서 조합할 index 정보를 담고 있는 배열
+// n : n개
+// index : 현재 조합이 된 index 정보
+// list : 최종적으로 조합이 된 정보를 담아 둘 list
+func combination(_ sequence:[String],
+                 _ k: Int,
+                 combi: inout [Int],
+                 target: Int,
+                 n: Int,
+                 index: Int,
+                 list: inout [String])
+{
     if k == 0 {
-        print(str)
+        print(combi)
         var comStr = ""
         for i in combi {
-            comStr += String(number[i])
+            comStr += sequence[i]
         }
-        list.append(Int(comStr)!)
+        list.append(comStr)
     }
     else if target == n {
         return
     }
     else {
         combi[index] = target
-        combination(number, k - 1, combi: &combi, target: target + 1, n: n, index: index + 1, list: &list)
-        combination(number, k, combi: &combi, target: target + 1, n: n, index: index, list: &list)
+        combination(sequence, k - 1, combi: &combi, target: target + 1, n: n, index: index + 1, list: &list)
+        combination(sequence, k, combi: &combi, target: target + 1, n: n, index: index, list: &list)
     }
 }
 ```
