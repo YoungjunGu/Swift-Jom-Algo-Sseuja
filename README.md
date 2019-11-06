@@ -40,6 +40,7 @@
 <details><summary>알고리즘 Strategy</summary> 
   <li><a href = "#combination"><code>combination</code></a></li>
   <li><a href = "#Dijkstra"><code>Dijkstra</code></a></li>
+  <li><a href = "#2차원배열회전"><code>2차원배열회전</code></a></li>
 </details>  
 
 
@@ -494,3 +495,21 @@ func selectPath(_ distance: [Int], _ N: Int, _ visited: [Bool]) -> Int {
 }
 ```
 </details>
+  
+  
+### 2차원배열회전  
+  
+<details><summary>코드 보기</summary>
+ 
+```swift
+ // NxN 2차원 배열 
+ for i in 0..<N {
+    for j in 0..<3 {
+        rotationArr[j][N-1-i] = arr[i][j]
+    }
+}
+```  
+</details>  
+ 
+  
+
