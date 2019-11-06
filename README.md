@@ -62,6 +62,11 @@ extension String {
         return String(self[start..<end])
     }
 }
+
+let str = "iOS Developer"
+
+print(str[0..<3])   // iOS
+print(str[4..<str.count]) // Developer
 ```
 </details>
 
