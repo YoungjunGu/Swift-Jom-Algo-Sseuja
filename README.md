@@ -409,7 +409,7 @@ arr.forEach {
 </hr>
 
 
-# 알고리즘 Startegy
+# 알고리즘 Strategy
 
 ### combination
 
