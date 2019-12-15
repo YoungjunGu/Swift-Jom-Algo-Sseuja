@@ -39,6 +39,7 @@
 
 <details><summary>알고리즘 Strategy</summary> 
   <li><a href = "#combination"><code>combination</code></a></li>
+  <li><a href = "#permutation"><code>permutation</code></a></li>	
   <li><a href = "#Dijkstra"><code>Dijkstra</code></a></li>
   <li><a href = "#2차원배열회전"><code>2차원배열회전</code></a></li>
 </details>  
@@ -450,6 +451,29 @@ func combination(_ sequence:[String],
 }
 ```
 </details>  
+
+### permutation  
+
+<details><summary>코드 보기</summary>
+	
+```swift
+// n개 중에서 r개를 뽑는 경우
+func permutation(_ arr: [Int], _ index: Int, _ n: Int, _ r: Int) {
+    var temp = arr
+    if index == r {
+        print(arr)
+        return
+    }
+    
+    for i in index..<n {
+        temp.swapAt(index, i)
+        permutation(temp, index + 1, n, r)
+        temp.swapAt(index, i)
+    }
+}
+```	
+</details>  	
+
 
 ### Dijkstra
 
